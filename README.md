@@ -1,11 +1,11 @@
-About cmsis-pack-manager
-========================
+About cmsis-pack-manager-feedstock
+==================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cmsis-pack-manager-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/pyocd/cmsis-pack-manager
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cmsis-pack-manager-feedstock/blob/main/LICENSE.txt)
 
 Summary: Python manager for CMSIS-Pack index and cache with fast Rust backend
 
