@@ -1,13 +1,13 @@
 {% set name = "cmsis-pack-manager" %}
-{% set version = "0.4.0" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cmsis-pack-manager-{{ version }}.tar.gz
-  sha256: 35e506e8f148d9e4f0ab948db4007a64c035337cf526630d0f6f55f7f3b9b20c
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 94913a3db9695f8d0676a4a74916a5626984e2b46f923ada61881e4f5064079e
   patches:
     - fix_cargo_target_path.patch
 
@@ -19,11 +19,12 @@ build:
     - cargo bundle-licenses --format yaml --output THIRDPARTY.yaml
     - cd ..
     - {{ PYTHON }} -m pip install . -vv --no-deps
-  number: 1
+  number: 0
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('rust') }}
     - cargo-bundle-licenses
   host:
@@ -52,7 +53,7 @@ about:
   home: https://github.com/pyocd/cmsis-pack-manager
   summary: Python manager for CMSIS-Pack index and cache with fast Rust backend
   license: Apache-2.0
-  license_file: 
+  license_file:
     - LICENSE
     - rust/THIRDPARTY.yaml
 
