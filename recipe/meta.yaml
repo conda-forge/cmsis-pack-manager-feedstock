@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cmsis-pack-manager-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cmsis-pack-manager-{{ version }}.tar.gz
   sha256: 35e506e8f148d9e4f0ab948db4007a64c035337cf526630d0f6f55f7f3b9b20c
   patches:
     - fix_cargo_target_path.patch
@@ -19,11 +19,12 @@ build:
     - cargo bundle-licenses --format yaml --output THIRDPARTY.yaml
     - cd ..
     - {{ PYTHON }} -m pip install . -vv --no-deps
-  number: 1
+  number: 2
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('rust') }}
     - cargo-bundle-licenses
   host:
